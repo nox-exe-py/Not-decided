@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0b0f">
+  <title>SocialHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toast"></div>
+
+  <section id="authView" class="auth-wrap">
+    <div class="auth-card">
+      <div class="brand">SocialHub</div>
+      <p class="muted">Instagram-style social app starter</p>
+      <input id="nameInput" placeholder="Username" maxlength="24">
+      <input id="emailInput" type="email" placeholder="Email">
+      <input id="passInput" type="password" placeholder="Password">
+      <button class="primary" id="loginBtn">Enter app</button>
+      <p class="tiny">Demo mode: data stays on this device until you connect Supabase.</p>
+    </div>
+  </section>
+
+  <div id="appView" class="app hidden">
+    <header class="topbar">
+      <div class="brand small">SocialHub</div>
+      <div class="top-actions">
+        <button class="icon-btn" data-go="create" aria-label="Create">＋</button>
+        <button class="icon-btn" data-go="messages" aria-label="Messages">✉</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="page active" id="home">
+        <div class="stories" id="stories"></div>
+        <div id="feed"></div>
+      </section>
+
+      <section class="page" id="search">
+        <div class="section-head"><h2>Search</h2></div>
+        <input class="searchbox" id="searchInput" placeholder="Search people or posts">
+        <div id="searchResults" class="grid"></div>
+      </section>
+
+      <section class="page" id="create">
+        <div class="section-head"><h2>Create Post</h2></div>
+        <div class="card form-card">
+          <input id="postImage" placeholder="Image URL (optional)">
+          <textarea id="postCaption" placeholder="Write a caption..." maxlength="500"></textarea>
+          <button class="primary" id="publishBtn">Publish</button>
+        </div>
+      </section>
+
+      <section class="page" id="reels">
+        <div class="section-head"><h2>Reels</h2></div>
+        <div id="reelList"></div>
+      </section>
+
+      <section class="page" id="messages">
+        <div class="section-head split">
+          <h2>Messages</h2>
+          <button class="secondary" data-go="call">Start Call</button>
+        </div>
+        <div class="chat-card">
+          <div id="messagesList" class="messages-list"></div>
+          <div class="composer">
+            <input id="messageInput" placeholder="Message...">
+            <button id="sendMessageBtn">Send</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="call">
+        <div class="section-head split">
+          <h2>Call & Screen Share</h2>
+          <button class="secondary" data-go="messages">Back</button>
+        </div>
+        <div class="call-grid">
+          <div class="video-card">
+            <video id="localVideo" autoplay playsinline muted></video>
+            <span>You</span>
+          </div>
+          <div class="video-card">
+            <video id="shareVideo" autoplay playsinline muted></video>
+            <span>Shared screen preview</span>
+          </div>
+        </div>
+        <div class="call-controls">
+          <button id="cameraBtn">Camera</button>
+          <button id="micBtn">Mic</button>
+          <button id="shareBtn" class="primary">Share Screen</button>
+          <button id="endCallBtn" class="danger">End</button>
+        </div>
+        <p class="tiny center">
+          Browser demo: camera/mic and your own screen preview work. Real person-to-person calling
+          needs a signaling/call service such as LiveKit.
+        </p>
+      </section>
+
+      <section class="page" id="profile">
+        <div class="profile-head">
+          <div id="avatarBig" class="avatar big">S</div>
+          <div>
+            <h2 id="profileName">@user</h2>
+            <div class="stats"><b id="postCount">0</b> posts · <b>128</b> followers · <b>94</b> following</div>
+          </div>
+        </div>
+        <div class="bio">Building something awesome 🚀</div>
+        <button class="secondary wide" id="logoutBtn">Log out</button>
+        <div id="profileGrid" class="grid"></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav active" data-go="home">⌂<span>Home</span></button>
+      <button class="nav" data-go="search">⌕<span>Search</span></button>
+      <button class="nav" data-go="reels">▶<span>Reels</span></button>
+      <button class="nav" data-go="messages">✉<span>Chat</span></button>
+      <button class="nav" data-go="profile">◎<span>Profile</span></button>
+    </nav>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
